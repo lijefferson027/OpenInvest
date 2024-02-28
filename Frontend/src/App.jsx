@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// Follow this react guide to get started (ctrl+click): https://react.dev/learn
 import './App.css'
+import MiniDrawer from './assets/components/sidebar'
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import Homepage from './pages/homepage';
+import Accounts from './pages/accounts';
+import Budget from './pages/budget';
+import Goals from './pages/goals';
+import Investment from './pages/investment';
+import Transactions from './pages/transactions';
+import Trends from './pages/trends';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
+    // To view your component import it in between <div> </div>
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/accounts" element={<Accounts />} />
+          <Route path="/budget" element={<Budget />} />
+          <Route path="/goals" element={<Goals />} />
+          <Route path="/investment" element={<Investment />} />
+          <Route path="/transactions" element={<Transactions />} />
+          <Route path="/trends" element={<Trends />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
 
-export default App
+export default App;
