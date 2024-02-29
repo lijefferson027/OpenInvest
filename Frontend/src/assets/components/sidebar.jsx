@@ -102,9 +102,17 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
   
 );
+//issue with highlighting selected page tab(need to double click), come back to it later
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [color,changeColor] = React.useState("#416454");
+    const [color1,changeColor1] = React.useState("#416454");
+      const [color2,changeColor2] = React.useState("#416454");
+        const [color3,changeColor3] = React.useState("#416454");
+          const [color4,changeColor4] = React.useState("#416454");
+            const [color5,changeColor5] = React.useState("#416454");
+              const [color6,changeColor6] = React.useState("#416454");
     const navigate = useNavigate();
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -142,13 +150,14 @@ export default function MiniDrawer() {
         <Divider />
         <List sx={{backgroundColor:'#8DDAB8', height:1, borderRadius:2}}>
 
-            <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate("/")}}> 
+            <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{changeColor("White"); navigate("/")}}> 
               <ListItemButton
                 sx={{
                   marginTop:1,
                   minHeight: 80,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
+                  color:'#416454'
                 }}
               >
                 <ListItemIcon
@@ -156,21 +165,23 @@ export default function MiniDrawer() {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
+                    color: `${color}`
                   }}
                 >
                   <CottageIcon fontSize='large'/>
                 </ListItemIcon>
-                <ListItemText primary="Overview" sx={{ opacity: open ? 1 : 0}} />
+                <ListItemText primary="Overview" sx={{ opacity: open ? 1 : 0}} classes={{ primary: 'nav-label-styling' }} />
               </ListItemButton>
             </ListItem>
 
-            <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate("/Transactions")}}> 
+            <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{changeColor1("White"); navigate("/Transactions")}}> 
               <ListItemButton
                 sx={{
                   marginTop:1,
                   minHeight: 80,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
+                  color:'#416454'
                 }}
               >
                 <ListItemIcon
@@ -178,21 +189,23 @@ export default function MiniDrawer() {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
+                    color: `${color1}`
                   }}
                 >
                   <ReceiptLongIcon fontSize='large' />
                 </ListItemIcon>
-                <ListItemText primary="Transactions" sx={{ opacity: open ? 1 : 0}} />
+                <ListItemText primary="Transactions" sx={{ opacity: open ? 1 : 0}} classes={{ primary: 'nav-label-styling' }}/>
               </ListItemButton>
             </ListItem>
 
-                        <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate("/Accounts")}}> 
+                        <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{changeColor2("White"); navigate("/Accounts")}}> 
               <ListItemButton
                 sx={{
                   marginTop:1,
                   minHeight: 80,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
+                  color:'#416454'
                 }}
               >
                 <ListItemIcon
@@ -200,21 +213,23 @@ export default function MiniDrawer() {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
+                    color: `${color2}`
                   }}
                 >
                   <ManageAccountsIcon fontSize='large' />
                 </ListItemIcon>
-                <ListItemText primary="Accounts" sx={{ opacity: open ? 1 : 0}} />
+                <ListItemText primary="Accounts" sx={{ opacity: open ? 1 : 0}} classes={{ primary: 'nav-label-styling' }}/>
               </ListItemButton>
             </ListItem>
 
-                        <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate("/Budget")}}> 
+                        <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{changeColor3("White"); navigate("/Budget")}}> 
               <ListItemButton
                 sx={{
                   marginTop:1,
                   minHeight: 80,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
+                  color:'#416454'
                 }}
               >
                 <ListItemIcon
@@ -222,21 +237,23 @@ export default function MiniDrawer() {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
+                    color: `${color3}`
                   }}
                 >
                   <SavingsIcon fontSize='large' />
                 </ListItemIcon>
-                <ListItemText primary="Budget" sx={{ opacity: open ? 1 : 0}} />
+                <ListItemText primary="Budget" sx={{ opacity: open ? 1 : 0}} classes={{ primary: 'nav-label-styling' }}/>
               </ListItemButton>
             </ListItem>
 
-                        <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate("/Goals")}}> 
+                        <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{changeColor4("White"); navigate("/Goals")}}> 
               <ListItemButton
                 sx={{
                   marginTop:1,
                   minHeight: 80,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
+                  color:'#416454'
                 }}
               >
                 <ListItemIcon
@@ -244,21 +261,23 @@ export default function MiniDrawer() {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
+                    color: `${color4}`
                   }}
                 >
                   <TaskAltIcon fontSize='large' />
                 </ListItemIcon>
-                <ListItemText primary="Goals" sx={{ opacity: open ? 1 : 0}} />
+                <ListItemText primary="Goals" sx={{ opacity: open ? 1 : 0}} classes={{ primary: 'nav-label-styling' }}/>
               </ListItemButton>
             </ListItem>
 
-                        <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate("/Trends")}}> 
+                        <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{changeColor5("White"); navigate("/Trends")}}> 
               <ListItemButton
                 sx={{
                   marginTop:1,
                   minHeight: 80,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
+                  color:'#416454'
                 }}
               >
                 <ListItemIcon
@@ -266,21 +285,23 @@ export default function MiniDrawer() {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
+                    color: `${color5}`
                   }}
                 >
                   <TrendingUpIcon fontSize='large' />
                 </ListItemIcon>
-                <ListItemText primary="Trends" sx={{ opacity: open ? 1 : 0}} />
+                <ListItemText primary="Trends" sx={{ opacity: open ? 1 : 0}} classes={{ primary: 'nav-label-styling' }}/>
               </ListItemButton>
             </ListItem>
 
-                        <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate("/Investment")}}> 
+                        <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{changeColor6("White"); navigate("/Investment")}}> 
               <ListItemButton
                 sx={{
                   marginTop:1,
                   minHeight: 80,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
+                  color:'#416454'
                 }}
               >
                 <ListItemIcon
@@ -288,11 +309,12 @@ export default function MiniDrawer() {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
+                    color: `${color6}`
                   }}
                 >
                   <PriceChangeIcon fontSize='large' />
                 </ListItemIcon>
-                <ListItemText primary="Investment" sx={{ opacity: open ? 1 : 0}} />
+                <ListItemText primary="Investment" sx={{ opacity: open ? 1 : 0}} classes={{ primary: 'nav-label-styling' }} />
               </ListItemButton>
             </ListItem>
         </List>

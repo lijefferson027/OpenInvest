@@ -40,3 +40,23 @@
 .read-the-docs {
   color: #888;
 }
+.footer{
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+}
+
+/* App.css */
+.nav-label-styling {
+  font-size: 1.1rem !important;
+  /* Add !important if needed */
+  font-weight: 600 !important;
+  font: Roboto !important;
+
+}
+
+.bottom-nav-styling{
+  background-color: #8DDAB8 !important;
+  height: 8vh !important;
+}
