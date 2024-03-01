@@ -9,6 +9,7 @@ const homepage = () => {
         <Box sx={{ display: 'flex' }} >
         <MiniDrawer />
         <div className="App">HOME PAGE ROUTE</div>
+        <div className="yomama"> deez nuts</div>
         </Box>
         
         </>
