@@ -1,3 +1,33 @@
-.graph-button:hover{
-    background-color: red;
-}
+/* homepage.css */
+
+/* Default button styles */
+.graph-buttons {
+    color: #34A853;
+    /* Add any other common styles here */
+  }
+  
+  /* Media queries for different screen sizes */
+  @media (max-width: 600px) {
+    /* Adjust button size for smaller screens */
+    .graph-buttons {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+  
+  @media (min-width: 601px) and (max-width: 1024px) {
+    /* Adjust button size for medium-sized screens */
+    .graph-buttons {
+      font-size: 16px;
+      padding: 10px 20px;
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    /* Adjust button size for larger screens */
+    .graph-buttons {
+      font-size: 18px;
+      padding: 12px 24px;
+    }
+  }
+  
