@@ -1,7 +1,3 @@
-.chartContainer{
-    position: absolute;
-    top: 7em;
-    left: 6em;
-    width: 50em;
-    height: 50em;
+.graph-button:hover{
+    background-color: red;
 }
