@@ -19,8 +19,7 @@ function Buttons() {
             color: "#34A853",
             "&:hover": { backgroundColor: "#34A853", color: "#FFF" },
             mx: 2,
-            border: 1,
-            fontSize: 12,
+            fontSize: 15,
             position: "relative",
           }}
         >
@@ -31,8 +30,7 @@ function Buttons() {
             color: "#34A853",
             "&:hover": { backgroundColor: "#34A853", color: "#FFF" },
             mx: 2,
-            border: 1,
-            fontSize: 12,
+            fontSize: 15,
             position: "relative",
           }}
         >
@@ -43,8 +41,7 @@ function Buttons() {
             color: "#34A853",
             "&:hover": { backgroundColor: "#34A853", color: "#FFF" },
             mx: 2,
-            border: 1,
-            fontSize: 12,
+            fontSize: 15,
             position: "relative",
           }}
         >
@@ -55,8 +52,7 @@ function Buttons() {
             color: "#34A853",
             "&:hover": { backgroundColor: "#34A853", color: "#FFF" },
             mx: 2,
-            border: 1,
-            fontSize: 12,
+            fontSize: 15,
             position: "relative",
           }}
         >
