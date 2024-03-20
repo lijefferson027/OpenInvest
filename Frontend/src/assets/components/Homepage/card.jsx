@@ -8,16 +8,26 @@ import { faPlus, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Button, Box } from "@mui/material";
 
 function Dashcard() {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState({
+    checkingAndSaving: false,
+    investment: false,
+    loans: false,
+    creditCards: false,
+  });
 
-  const toggleExpansion = () => {
-    setExpanded(!expanded);
+  const toggleExpansion = (section) => {
+    setExpanded({ ...expanded, [section]: !expanded[section] });
   };
 
   return (
     <Card
       variant="outlined"
-      sx={{ marginTop: 2, height: "50%", backgroundColor: "#ECECEC" }}
+      sx={{
+        marginTop: 2,
+        backgroundColor: "#ECECEC",
+        maxWidth: 750,
+        margin: "auto",
+      }}
     >
       <CardContent>
         <Box
@@ -51,115 +61,183 @@ function Dashcard() {
           direction="column"
           alignItems={"flex-start"}
           justifyContent={"space-evenly"}
-          sx={{ height: "20em", width: "100%" }}
-          display={"inline-flex"}
+          sx={{ width: "100%", marginTop: 2 }}
         >
           <Grid
             item
+            container
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
             variant="outlined"
             width={"100%"}
             bgcolor={"white"}
             borderRadius={2}
-            height={"3em"}
-            display={"inline-flex"}
-            justifyContent={"space-between"}
+            height={expanded.checkingAndSaving ? "10em" : "3em"}
+            sx={{ marginBottom: 1 }}
           >
             <Typography textAlign={"left"} padding={"5px"}>
               Checking and Saving:
               <span style={{ fontWeight: 700 }}> $14,590.78</span>
             </Typography>
-            <Button onClick={toggleExpansion} sx={{ color: "black" }}>
-              <FontAwesomeIcon icon={faChevronDown} />
-            </Button>
-            {expanded && (
-              <Grid
-                container
-                direction="column"
-                alignItems={"flex-start"}
-                justifyContent={"space-around"}
-                sx={{ marginTop: 2 }}
-              >
-                <Grid
-                  item
-                  variant="outlined"
-                  width={"100%"}
-                  bgcolor={"white"}
-                  borderRadius={2}
-                  height={"auto"} // Auto height for expanded content
-                  display={"flex"}
-                  justifyContent={"space-between"}
-                  alignItems={"center"}
-                >
-                  <Typography textAlign={"left"} padding={"5px"}>
-                    Checking and Saving:
-                    <span style={{ fontWeight: 700 }}> $14,590.78</span>
-                  </Typography>
-                  <Button sx={{ color: "black" }}>
-                    <FontAwesomeIcon icon={faChevronDown} />
-                  </Button>
-                </Grid>
-                {/* Additional content for Checking and Saving */}
-                <Grid item>
-                  <Typography variant="body2" sx={{ marginLeft: 20 }}>
-                    Checking Account Number: XXXX-XXXX-XXXX-XXXX
-                  </Typography>
-                  <Typography variant="body2" sx={{ marginLeft: 20 }}>
-                    Saving Account Number: XXXX-XXXX-XXXX-XXXX
-                  </Typography>
-                </Grid>
+            {expanded.checkingAndSaving && (
+              <Grid item sx={{ marginLeft: 2 }}>
+                <Typography variant="body2">
+                  Checking Account Number: XXXX-XXXX-XXXX-XXXX
+                </Typography>
+                <Typography variant="body2">
+                  Saving Account Number: XXXX-XXXX-XXXX-XXXX
+                </Typography>
               </Grid>
             )}
+            {expanded.checkingAndSaving && (
+              <Button
+                onClick={() => toggleExpansion("checkingAndSaving")}
+                sx={{ color: "black" }}
+              >
+                <FontAwesomeIcon icon={faChevronDown} />
+              </Button>
+            )}
+            {!expanded.checkingAndSaving && (
+              <Button
+                onClick={() => toggleExpansion("checkingAndSaving")}
+                sx={{ color: "black" }}
+              >
+                <FontAwesomeIcon icon={faChevronDown} />
+              </Button>
+            )}
           </Grid>
+
           <Grid
             item
+            container
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
             variant="outlined"
             width={"100%"}
             bgcolor={"white"}
             borderRadius={2}
-            height={"3em"}
-            display={"inline-flex"}
-            justifyContent={"space-between"}
+            height={expanded.investment ? "10em" : "3em"}
+            sx={{ marginBottom: 1 }}
           >
             <Typography textAlign={"left"} padding={"5px"}>
               Investment: <span style={{ fontWeight: 700 }}> $4862.55</span>
             </Typography>
-            <Button sx={{ color: "black" }}>
-              <FontAwesomeIcon icon={faChevronDown} />{" "}
-            </Button>
+            {expanded.investment && (
+              <Grid item sx={{ marginLeft: 2 }}>
+                <Typography variant="body2">
+                  Fidelity: XXXX-XXXX-XXXX-XXXX
+                </Typography>
+                <Typography variant="body2">
+                  Robinhood: XXXX-XXXX-XXXX-XXXX
+                </Typography>
+              </Grid>
+            )}
+            {expanded.investment && (
+              <Button
+                onClick={() => toggleExpansion("investment")}
+                sx={{ color: "black" }}
+              >
+                <FontAwesomeIcon icon={faChevronDown} />
+              </Button>
+            )}
+            {!expanded.investment && (
+              <Button
+                onClick={() => toggleExpansion("investment")}
+                sx={{ color: "black" }}
+              >
+                <FontAwesomeIcon icon={faChevronDown} />
+              </Button>
+            )}
           </Grid>
+
           <Grid
             item
+            container
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
             variant="outlined"
             width={"100%"}
             bgcolor={"white"}
             borderRadius={2}
-            height={"3em"}
-            display={"inline-flex"}
-            justifyContent={"space-between"}
+            height={expanded.loans ? "10em" : "3em"}
+            sx={{ marginBottom: 1 }}
           >
             <Typography textAlign={"left"} padding={"5px"}>
               Loans: <span style={{ fontWeight: 700 }}> $0.00</span>
             </Typography>
-            <Button sx={{ color: "black" }}>
-              <FontAwesomeIcon icon={faChevronDown} />{" "}
-            </Button>
+            {expanded.loans && (
+              <Grid item sx={{ marginLeft: 2 }}>
+                <Typography variant="body2">
+                  Auto Loan: XXXX-XXXX-XXXX-XXXX
+                </Typography>
+                <Typography variant="body2">
+                  House Loan: XXXX-XXXX-XXXX-XXXX
+                </Typography>
+              </Grid>
+            )}
+            {expanded.loans && (
+              <Button
+                onClick={() => toggleExpansion("loans")}
+                sx={{ color: "black" }}
+              >
+                <FontAwesomeIcon icon={faChevronDown} />
+              </Button>
+            )}
+            {!expanded.loans && (
+              <Button
+                onClick={() => toggleExpansion("loans")}
+                sx={{ color: "black" }}
+              >
+                <FontAwesomeIcon icon={faChevronDown} />
+              </Button>
+            )}
           </Grid>
+
           <Grid
             item
+            container
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
             variant="outlined"
             width={"100%"}
             bgcolor={"white"}
             borderRadius={2}
-            height={"3em"}
-            display={"inline-flex"}
-            justifyContent={"space-between"}
+            height={expanded.creditCards ? "10em" : "3em"}
+            sx={{ marginBottom: 1 }}
           >
             <Typography textAlign={"left"} padding={"5px"}>
               Credit Cards: <span style={{ fontWeight: 700 }}> -$475.16</span>
             </Typography>
-            <Button sx={{ color: "black" }}>
-              <FontAwesomeIcon icon={faChevronDown} />{" "}
-            </Button>
+            {expanded.creditCards && (
+              <Grid item sx={{ marginLeft: 2 }}>
+                <Typography variant="body2">
+                  Visa: XXXX-XXXX-XXXX-XXXX
+                </Typography>
+                <Typography variant="body2">
+                  Master: XXXX-XXXX-XXXX-XXXX
+                </Typography>
+              </Grid>
+            )}
+            {expanded.creditCards && (
+              <Button
+                onClick={() => toggleExpansion("creditCards")}
+                sx={{ color: "black" }}
+              >
+                <FontAwesomeIcon icon={faChevronDown} />
+              </Button>
+            )}
+            {!expanded.creditCards && (
+              <Button
+                onClick={() => toggleExpansion("creditCards")}
+                sx={{ color: "black" }}
+              >
+                <FontAwesomeIcon icon={faChevronDown} />
+              </Button>
+            )}
           </Grid>
         </Grid>
       </CardContent>

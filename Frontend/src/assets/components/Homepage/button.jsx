@@ -3,7 +3,13 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import "../../../pages/CSS/homepage.css";
 
-function Buttons() {
+function Buttons({ onClick }) {
+  const handleClick = (dataType) => {
+    if (onClick) {
+      onClick(dataType); // Call the onClick function with the dataType argument
+    }
+  };
+
   return (
     <>
       <Container
@@ -22,6 +28,7 @@ function Buttons() {
             fontSize: 15,
             position: "relative",
           }}
+          onClick={() => handleClick("UserData")} // Call handleClick with "UserData" as argument
         >
           Networth
         </Button>
@@ -33,6 +40,7 @@ function Buttons() {
             fontSize: 15,
             position: "relative",
           }}
+          onClick={() => handleClick("StockData")} // Call handleClick with "StockData" as argument
         >
           Stock
         </Button>
@@ -44,6 +52,7 @@ function Buttons() {
             fontSize: 15,
             position: "relative",
           }}
+          onClick={() => handleClick("SpendingData")} // Call handleClick with "SpendingData" as argument
         >
           Spending
         </Button>
@@ -55,6 +64,7 @@ function Buttons() {
             fontSize: 15,
             position: "relative",
           }}
+          onClick={() => handleClick("LoanData")} // Call handleClick with "LoanData" as argument
         >
           Loans
         </Button>
