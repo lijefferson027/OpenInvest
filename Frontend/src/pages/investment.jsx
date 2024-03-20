@@ -1,7 +1,7 @@
 import React from "react";
 //For Each page import the Sidebar Component in order to navigate to different pages
 import MiniDrawer from "../assets/components/sidebar";
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 //import Line chart component
 import { Line } from "react-chartjs-2";
 import {
@@ -31,7 +31,18 @@ const investment = () => {
         return (<>
         <Box sx={{ display: 'flex'}} >
         <MiniDrawer /> {/*Navigation component*/}
-        <div className="App">INVESTMENT PAGE ROUTE</div>
+        <Grid
+        container
+        spacing={2}
+        className="grid-container"
+        sx={{
+          height: "100vh",
+          width: "100vw",
+          position: "absolute",
+          top: "100px",
+          left: "70px",
+        }}>
+        <Grid item position="relative" marginTop={3} marginLeft={3} xs="4">
        {/*Add line chart*/}
         <div className= "RateofReturnChart">
         <Line 
@@ -91,7 +102,10 @@ const investment = () => {
                 },
             },
         }}
-        ></Line> </div>
+        ></Line> 
+        </div> 
+        </Grid> 
+        </Grid>
         </Box>
     </>) 
 };
