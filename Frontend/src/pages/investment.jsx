@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //For Each page import the Sidebar Component in order to navigate to different pages
 import MiniDrawer from "../assets/components/sidebar";
-import { Box, ButtonBase, Grid, IconButton } from "@mui/material";
+import { Box, Grid, IconButton } from "@mui/material";
 //Import user's holding list
 import List from "@mui/joy/List";
 import ListItem from "@mui/joy/ListItem";
@@ -15,30 +15,7 @@ import HelpIcon from "@mui/icons-material/Help";
 import Typography from "@mui/joy/Typography";
 //import Line chart component
 import TradingViewWidget from "../assets/components/TradingViewWidget";
-import { Line } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  LineElement,
-  PointElement,
-  CategoryScale,
-  LinearScale,
-  Tooltip,
-  Legend,
-  Filler,
-  Title,
-} from "chart.js";
 
-//activate components
-ChartJS.register(
-  LineElement,
-  PointElement,
-  CategoryScale,
-  LinearScale,
-  Tooltip,
-  Legend,
-  Filler,
-  Title
-);
 const investment = () => {
   //Toggle Button state manager
   const [showExplanation, setShowExplanation] = useState(false);
@@ -46,7 +23,35 @@ const investment = () => {
   const toggleExplanation = () => {
     setShowExplanation(!showExplanation);
   };
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
+    script.async = true;
+    script.type = "text/javascript";
+    script.innerHTML = JSON.stringify({
+      symbols: [
+        { proName: "FOREXCOM:SPXUSD", title: "S&P 500 Index" },
+        { proName: "FOREXCOM:NSXUSD", title: "US 100 Cash CFD" },
+        { proName: "FX_IDC:EURUSD", title: "EUR to USD" },
+        { proName: "BITSTAMP:BTCUSD", title: "Bitcoin" },
+        { proName: "BITSTAMP:ETHUSD", title: "Ethereum" },
+      ],
+      showSymbolLogo: true,
+      isTransparent: false,
+      displayMode: "adaptive",
+      colorTheme: "light",
+      locale: "en",
+    });
 
+    // Ensure the div for the script is ready in the DOM
+    document.getElementById("tradingview-ticker").appendChild(script);
+
+    // Cleanup function to remove the script if the component unmounts
+    return () => {
+      document.getElementById("tradingview-ticker")?.removeChild(script);
+    };
+  }, []);
   return (
     <>
       <Box sx={{ display: "flex" }}>
@@ -63,18 +68,17 @@ const investment = () => {
             left: "70px",
           }}
         >
-          <Grid item position="relative" marginTop={3} marginLeft={3} xs={4.7}>
+          <Grid item position="relative" marginTop={0} marginLeft={3} xs={4.7}>
             {/*Add line chart*/}
             <div className="RateofReturnChart">
               <TradingViewWidget />
             </div>
           </Grid>
-          <Grid item position="relative" marginTop={3} marginLeft={50} xs={3}>
+          <Grid item position="relative" marginTop={0} marginLeft={50} xs={3}>
             <Box display="flex" justifyContent="flex-center">
               {showExplanation && (
                 <Paper className="HelpText" variant="elevation">
-                  Trade, sell, buy, and gain insights into your current
-                  holdings.
+                  Trade, sell, buy, and gain insights directly from your portforlio.
                 </Paper>
               )}
             </Box>
@@ -88,7 +92,7 @@ const investment = () => {
                       className="Holdingstext"
                       sx={{ color: "black" }}
                     >
-                      Your Holdings
+                      Your Portforlio
                     </Typography>
                   </ListItemContent>
                   <IconButton
@@ -111,9 +115,9 @@ const investment = () => {
               </List>
             </div>
           </Grid>
-          <Grid item position="relative" marginTop={3} marginLeft={3} xs={12}>
-            {/*Watch List component*/}
-            <div>Row 2 column 1</div>
+          <Grid item position="relative" xs={12} >
+            {/*Ticker footer component*/}
+             <div id="tradingview-ticker" className="tradingview-widget-container"></div>
           </Grid>
         </Grid>
       </Box>

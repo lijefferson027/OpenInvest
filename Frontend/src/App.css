@@ -95,4 +95,10 @@
   background-color: #8DDAB8 !important;
   color: rgb(65, 100, 84) !important;
 }
-
+.tradingview-widget-container{
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+  width: 100vw !important;
+}
