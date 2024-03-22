@@ -3,12 +3,15 @@ import './App.css'
 import MiniDrawer from './assets/components/sidebar'
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Homepage from './pages/homepage';
-import Accounts from './pages/accounts';
+import Accounts from './pages/settings';
 import Budget from './pages/budget';
 import Goals from './pages/goals';
 import Investment from './pages/investment';
 import Transactions from './pages/transactions';
 import Trends from './pages/trends';
+import Settings from './pages/settings';
+import Orders from './pages/orders';
+import Payments from './pages/payments';
 
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
           <Route path="/investment" element={<Investment />} />
           <Route path="/transactions" element={<Transactions />} />
           <Route path="/trends" element={<Trends />} />
+          <Route path="/settings"  element={<Settings />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/payments"  element={<Payments />} />
         </Routes>
       </BrowserRouter>
     </>
