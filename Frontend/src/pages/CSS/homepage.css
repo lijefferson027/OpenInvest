@@ -30,4 +30,16 @@
       padding: 12px 24px;
     }
   }
-  
+ 
+  /* homepage.css */
+
+.tradingview-widget-container {
+  width: 100%;
+  height: 50%; /* Set the container height to match its parent */
+}
+
+.tradingview-widget-container__widget {
+  width: 100%;
+  height: 78%; /* Set the widget height to match its container */
+}
+

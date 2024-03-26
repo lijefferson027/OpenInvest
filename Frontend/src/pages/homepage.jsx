@@ -12,6 +12,7 @@ import "./CSS/homepage.css";
 import Grid from "@mui/material/Grid";
 import Buttons from "../assets/components/Homepage/button";
 import Dashcard from "../assets/components/Homepage/card";
+import Newsfeed from "../assets/components/Homepage/newsfeed";
 
 const Homepage = () => {
   const [dataToShow, setDataToShow] = useState(UserData); // State variable to track which data to display
@@ -85,9 +86,18 @@ const Homepage = () => {
               ],
             }}
           />
-          <Buttons onClick={handleButtonClick} />{" "}
-          {/* Pass the click handler to the button component */}
+          <Buttons onClick={handleButtonClick} />
           <Dashcard />
+        </Grid>
+        <Grid
+          item
+          position="relative"
+          marginTop={7}
+          marginRight={3}
+          xs="4"
+          lg="5"
+        >
+          <Newsfeed />
         </Grid>
       </Grid>
     </div>

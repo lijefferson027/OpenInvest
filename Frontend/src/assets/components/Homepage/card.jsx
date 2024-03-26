@@ -25,7 +25,7 @@ function Dashcard() {
       sx={{
         marginTop: 2,
         backgroundColor: "#ECECEC",
-        maxWidth: 750,
+        maxWidth: 1000,
         margin: "auto",
       }}
     >
