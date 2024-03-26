@@ -33,10 +33,10 @@
  
   /* homepage.css */
 
+
 .tradingview-widget-container {
   width: 100%;
-  height: 40%; /* Set the container height to match its parent */
-  margin-bottom: 7.5%;
+  height: 90%; /* Set the container height to match its parent */
 }
 
 .tradingview-widget-container__widget {
@@ -44,4 +44,3 @@
   height: 100%; /* Set the widget height to match its container */
   margin-bottom: 0%;
 }
-

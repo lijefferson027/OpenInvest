@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MiniDrawer from "../assets/components/sidebar";
-import { Box } from "@mui/material";
+import { Button, Box, Typography } from "@mui/material";
 import {
   UserData,
   StockData,
@@ -13,6 +13,9 @@ import Grid from "@mui/material/Grid";
 import Buttons from "../assets/components/Homepage/button";
 import Dashcard from "../assets/components/Homepage/card";
 import Newsfeed from "../assets/components/Homepage/newsfeed";
+import Chatbot from "../assets/components/Homepage/chatbot";
+import { faRobot } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Homepage = () => {
   const [dataToShow, setDataToShow] = useState(UserData); // State variable to track which data to display
@@ -36,6 +39,8 @@ const Homepage = () => {
         break;
     }
   };
+
+  const [chatbotval, setChatBotVal] = useState(false);
 
   return (
     <div>
@@ -96,8 +101,33 @@ const Homepage = () => {
           marginRight={3}
           xs="4"
           lg="5"
+          flexDirection={"column"}
         >
-          <Newsfeed />
+          <div
+            className="tradingview-widget-container"
+            style={{ height: chatbotval ? "49%" : "80%" }}
+          >
+            <Newsfeed />
+          </div>
+          {chatbotval ? (
+            <Chatbot />
+          ) : (
+            <Button
+              sx={{
+                fontSize: "3em",
+                color: "#37BE83",
+                position: "relative",
+                left: "7.6em",
+              }}
+            >
+              <FontAwesomeIcon
+                icon={faRobot}
+                onClick={() => {
+                  setChatBotVal(true);
+                }}
+              />
+            </Button>
+          )}
         </Grid>
       </Grid>
     </div>
