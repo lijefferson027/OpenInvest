@@ -68,51 +68,10 @@ const investment = () => {
             left: "70px",
           }}
         >
-          <Grid item position="relative" marginTop={0} marginLeft={3} xs={4.7}>
+          <Grid item position="relative" marginTop={0} marginLeft={5} xs={4.7}>
             {/*Add line chart*/}
             <div className="RateofReturnChart">
               <TradingViewWidget />
-            </div>
-          </Grid>
-          <Grid item position="relative" marginTop={0} marginLeft={50} xs={3}>
-            <Box display="flex" justifyContent="flex-center">
-              {showExplanation && (
-                <Paper className="HelpText" variant="elevation">
-                  Trade, sell, buy, and gain insights directly from your portforlio.
-                </Paper>
-              )}
-            </Box>
-
-            {/*Holdings component*/}
-            <div>
-              <List className="HoldingsStyleList">
-                <ListItem>
-                  <ListItemContent>
-                    <Typography
-                      className="Holdingstext"
-                      sx={{ color: "black" }}
-                    >
-                      Your Portforlio
-                    </Typography>
-                  </ListItemContent>
-                  <IconButton
-                    className="ButtonStyle"
-                    onClick={toggleExplanation}
-                    size="small"
-                  >
-                    <HelpIcon
-                      fontSize="medium"
-                      sx={{
-                        color: "#8DDAB8",
-                        backgroundColor: "#416454",
-                        borderRadius: 3,
-                      }}
-                    />
-                  </IconButton>
-                </ListItem>
-                <ListItemContent></ListItemContent>
-                <ListItem></ListItem>
-              </List>
             </div>
           </Grid>
           <Grid item position="relative" xs={12} >

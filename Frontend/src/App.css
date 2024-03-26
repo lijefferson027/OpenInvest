@@ -66,23 +66,12 @@
 }
 .RateofReturnChart{
   position:relative;
-  width:50vw;
-  height:70vh;
+  width:90vw;
+  height:80vh;
   border: 0.5rem solid rgb(65, 100, 84, .20);
   border-radius: 3rem;
   border-width: 1rem;
   padding: 1rem;
-}
-
-.Holdingstext{
-  font: "Arial, sans-serif" ;
-  font-size: 1.3rem !important;
-  font-weight: bold;
-}
-.HoldingsStyleList{
-  border: 1rem solid rgb(65, 100, 84, .20);
-  border-radius: 1rem !important;
-  width:30vw;
 }
 .ButtonStyle{
   outline: none !important;
