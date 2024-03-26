@@ -1,28 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 //For Each page import the Sidebar Component in order to navigate to different pages
 import MiniDrawer from "../assets/components/sidebar";
-import { Box, Grid, IconButton } from "@mui/material";
-//Import user's holding list
-import List from "@mui/joy/List";
-import ListItem from "@mui/joy/ListItem";
-import ListItemButton from "@mui/joy/ListItemButton";
-import ListItemDecorator from "@mui/joy/ListItemDecorator";
-import ListItemContent from "@mui/joy/ListItemContent";
-import ListDivider from "@mui/joy/ListDivider";
-import ListSubheader from "@mui/joy/ListSubheader";
-import Paper from "@mui/material/Paper";
-import HelpIcon from "@mui/icons-material/Help";
-import Typography from "@mui/joy/Typography";
+import { Box, Grid } from "@mui/material";
 //import Line chart component
 import TradingViewWidget from "../assets/components/TradingViewWidget";
 
 const investment = () => {
-  //Toggle Button state manager
-  const [showExplanation, setShowExplanation] = useState(false);
-
-  const toggleExplanation = () => {
-    setShowExplanation(!showExplanation);
-  };
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
@@ -55,7 +38,9 @@ const investment = () => {
   return (
     <>
       <Box sx={{ display: "flex" }}>
-        <MiniDrawer /> {/*Navigation component*/}
+        {/*Navigation component*/}
+        <MiniDrawer />
+        {/*Market analysis chart component*/}
         <Grid
           container
           spacing={2}
@@ -74,9 +59,12 @@ const investment = () => {
               <TradingViewWidget />
             </div>
           </Grid>
-          <Grid item position="relative" xs={12} >
+          <Grid item position="relative" xs={12}>
             {/*Ticker footer component*/}
-             <div id="tradingview-ticker" className="tradingview-widget-container"></div>
+            <div
+              id="tradingview-ticker"
+              className="tradingview-widget-container"
+            ></div>
           </Grid>
         </Grid>
       </Box>
