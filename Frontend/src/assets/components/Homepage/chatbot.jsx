@@ -98,9 +98,15 @@ function Chatbot() {
 
   return (
     <div className="App">
-      <div style={{ position: "relative", height: "20.5em", width: "100%" }}>
-        <MainContainer>
-          <ChatContainer>
+      <div
+        style={{
+          position: "relative",
+          height: "20.5em",
+          width: "100%",
+        }}
+      >
+        <MainContainer className="chatbox">
+          <ChatContainer className="chatbox">
             <MessageList
               scrollBehavior="smooth"
               typingIndicator={
@@ -108,13 +114,18 @@ function Chatbot() {
                   <TypingIndicator content="ChatGPT is typing" />
                 ) : null
               }
+              className="chatbox"
             >
               {messages.map((message, i) => {
                 console.log(message);
                 return <Message key={i} model={message} />;
               })}
             </MessageList>
-            <MessageInput placeholder="Type message here" onSend={handleSend} />
+            <MessageInput
+              placeholder="Type message here"
+              onSend={handleSend}
+              className="chatbox"
+            />
           </ChatContainer>
         </MainContainer>
       </div>
