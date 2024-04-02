@@ -1,32 +1,11 @@
-import React from "react";
-import { Container, Grid, Typography } from "@mui/material";
-
-const TextBoxContainerStyle = {
-  backgroundColor: "#FFFFFF",
-  border: "1px solid #3BC086",
-  borderRadius: "8px",
-  padding: "10px",
-};
-
-const GrayTextStyle = {
-  color: "#69747C",
-  textAlign: "left",
-};
-
-const BoldGrayTextStyle = {
-  ...GrayTextStyle,
-  fontWeight: "bold",
-};
+import { Container, Typography } from "@mui/material";
+import "./Textbox.css"; // Import CSS file
 
 export default function Textbox({ dollarAmount, title }) {
   return (
-    <Container style={TextBoxContainerStyle} maxWidth="md">
-      <Grid container spacing={1}>
-        <Grid item xs={12}>
-          <Typography style={BoldGrayTextStyle} variant="h5">{dollarAmount}</Typography>
-          <Typography style={GrayTextStyle} variant="body1">{title}</Typography>
-        </Grid>
-      </Grid>
+    <Container className="textbox-container">
+      <Typography className="gray-text" variant="body1">{title}</Typography>
+      <Typography className="bold-gray-text" variant="h3">{dollarAmount}</Typography>
     </Container>
   );
 }

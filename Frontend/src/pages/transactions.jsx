@@ -1,49 +1,60 @@
-import React from "react";
 import MiniDrawer from "../assets/components/sidebar";
-import { Container } from "@mui/material";
-import Grid from "@mui/material/Grid";
+import { Box, Grid, Typography } from "@mui/material";
 import Textbox from "../assets/components/Transactions/Textbox";
-import Linechart from "../assets/components/Homepage/chart";
+import "./CSS/transactionspage.css";
+import "../assets/components/Transactions/Textbox.css";
 
-const transactions = () => {
+
+const Transactions = () => {
     // Inline styles for the transactions page
-    const containerStyle = {
-        backgroundColor: "#F0F2F5",
-        maxHeight: "50vh", // Set minimum height to fill the viewport
-        display: "grid", // Use CSS Grid layout
-        gridTemplateRows: "1fr 1fr", // Divide the page into two rows of equal height
-        gridTemplateColumns: "1fr", // Use a single column to fill the width
-        gridGap: "20px", // Add gap between grid items
-        padding: "20px", // Add padding to create space around the content
-    };
-
+    
     return ( 
-        <div> 
-            <Container style= {containerStyle}>
-            {/* nav bar and side bar*/}
-            <MiniDrawer/>
-            {/* Container for 2 tex boxes */}
-            <Container>
-            <Grid container spacing={3} style={{ height: "100%" }} xs={12}> 
-                <Grid item xs={12}>
-                    {/* Pass dollarAmount and title as props */}
-                    <Textbox
-                        dollarAmount='$10000'
-                        title="Total Balance"
-                    />
+        <div>
+            <MiniDrawer />
+            <Box sx={{ flexGrow: 1, paddingTop: "20px", paddingLeft: "20px" }}>
+                <Grid 
+                    container
+                    spacing={2}
+                    className="transactions-container" 
+                >
+                    {/* Grid item 1 */}
+                    <Grid item
+                    position="relative"
+                    marginTop={6}
+                    marginLeft={3}
+                    marginRight={3}
+                    xs="4"
+                    lg="5" 
+                    >
+                        <Grid container direction="column" spacing={3}>
+                            <Grid 
+                            item
+                            > 
+                                <Textbox
+                                    dollarAmount={"1000"}
+                                    title={"Total"}
+                                />
+                            </Grid>
+                            <Grid item> 
+                                <Textbox
+                                    dollarAmount={"1000"}
+                                    title={"Total"}
+                                />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    {/* Grid item 3 */}
+                    <Grid item className="graph-item">
+                        <Grid container spacing={3}>
+                            <Grid item>
+                                
+                                </Grid>
+                        </Grid>
+                    </Grid>
                 </Grid>
-                <Grid item xs={12}>
-                    {/* Pass dollarAmount and title as props */}
-                    <Textbox
-                        dollarAmount='$200000'
-                        title="Credit Limit"
-                    />
-                </Grid>
-            </Grid>
-            </Container>
-            </Container>
+            </Box>
         </div>
-     );
+    );
 }
  
-export default transactions;
+export default Transactions;
