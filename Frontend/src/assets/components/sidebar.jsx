@@ -107,8 +107,6 @@ export default function MiniDrawer() {
   const [color1, changeColor1] = React.useState("#416454");
   const [color2, changeColor2] = React.useState("#416454");
   const [color3, changeColor3] = React.useState("#416454");
-  const [color4, changeColor4] = React.useState("#416454");
-  const [color5, changeColor5] = React.useState("#416454");
   const [color6, changeColor6] = React.useState("#416454");
   const navigate = useNavigate();
   const handleDrawerOpen = () => {
