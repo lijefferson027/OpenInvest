@@ -64,3 +64,30 @@
   color: white !important;
 
 }
+.RateofReturnChart{
+  position:relative;
+  width:90vw;
+  height:80vh;
+  border: 0.5rem solid rgb(65, 100, 84, .20);
+  border-radius: 3rem;
+  border-width: 1rem;
+  padding: 1rem;
+}
+.ButtonStyle{
+  outline: none !important;
+}
+.HelpText{
+  font: "Arial, sans-serif" ;
+  font-size: 1rem !important;
+  font-weight: bold;
+  width:30vw;
+  background-color: #8DDAB8 !important;
+  color: rgb(65, 100, 84) !important;
+}
+.tradingview-widget-container{
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+  width: 100vw !important;
+}
