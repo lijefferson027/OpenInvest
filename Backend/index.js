@@ -82,3 +82,5 @@ app.post('/create_link_token', async function (request, response) {
 app.listen(8000, ()=>{
     console.log("server has started");
 });
+
+console.log("testing");
