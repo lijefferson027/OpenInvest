@@ -63,7 +63,7 @@ const investment = () => {
             {/*Ticker footer component*/}
             <div
               id="tradingview-ticker"
-              className="tradingview-widget-container"
+              className="tradingview-widget-2"
             ></div>
           </Grid>
         </Grid>
