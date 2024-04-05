@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MiniDrawer from "../assets/components/sidebar";
 import { Button, Box, Typography } from "@mui/material";
 import {
@@ -19,6 +19,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Homepage = () => {
   const [dataToShow, setDataToShow] = useState(UserData); // State variable to track which data to display
+  const [chatbotval, setChatBotVal] = useState(false);
 
   const handleButtonClick = (dataType) => {
     switch (dataType) {
@@ -39,8 +40,6 @@ const Homepage = () => {
         break;
     }
   };
-
-  const [chatbotval, setChatBotVal] = useState(false);
 
   return (
     <div>

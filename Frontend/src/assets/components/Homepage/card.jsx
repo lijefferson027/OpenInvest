@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import CardContent from "@mui/material/CardContent";
@@ -6,6 +6,27 @@ import Typography from "@mui/material/Typography";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Button, Box } from "@mui/material";
+import axios from "axios";
+import { usePlaidLink } from "react-plaid-link";
+
+axios.defaults.baseURL = "http://localhost:8000";
+
+function PlaidAuth({ publicToken }) {
+  useEffect(() => {
+    async function fetchData() {
+      let accessToken = await axios.post("/exchange_public_token", {
+        public_token: publicToken,
+      });
+      console.log("access token ", accessToken.data);
+
+      const auth = await axios.post("/auth", {
+        access_token: accessToken.data.accessToken,
+      });
+
+      console.log("auth data ", auth.data);
+    }
+  }, []);
+}
 
 function Dashcard() {
   const [expanded, setExpanded] = useState({
@@ -18,6 +39,26 @@ function Dashcard() {
   const toggleExpansion = (section) => {
     setExpanded({ ...expanded, [section]: !expanded[section] });
   };
+
+  const [linkToken, setLinkToken] = useState();
+  const [publicToken, setPublicToken] = useState();
+
+  useEffect(() => {
+    async function fetch() {
+      const response = await axios.post("/create_link_token");
+      setLinkToken(response.data.link_token);
+      console.log("response ", response.data);
+    }
+    fetch();
+  }, []);
+
+  const { open, ready } = usePlaidLink({
+    token: linkToken,
+    onSuccess: (public_token, metadata) => {
+      setPublicToken(public_token);
+      console.log("success", public_token, metadata);
+    },
+  });
 
   return (
     <Card
@@ -48,8 +89,10 @@ function Dashcard() {
               position: "relative",
               top: 10,
             }}
+            onClick={() => open()}
+            disabled={!ready}
           >
-            <FontAwesomeIcon icon={faPlus} />
+            Add Accounts
           </Button>
         </Box>
         <Typography color={"black"} textAlign={"left"} fontSize={12}>
