@@ -7,6 +7,7 @@ import Accounts from './pages/accounts';
 import Budget from './pages/budget';
 import Investment from './pages/investment';
 import Transactions from './pages/transactions';
+import Login from './pages/login';
 
 
 
@@ -16,7 +17,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<Login />} />
           <Route path="/accounts" element={<Accounts />} />
           <Route path="/budget" element={<Budget />} />
           <Route path="/investment" element={<Investment />} />
