@@ -1,9 +1,7 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Grid, Paper, Typography } from "@mui/material";
 import { Bar, Doughnut } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import BarBorderComponent from "../components/BarBorderComponent";
-import PieBorderComponent from "../components/PieBorderComponent";
 import MiniDrawer from "../assets/components/sidebar";
 import {
     Chart as ChartJS,
@@ -51,6 +49,27 @@ const Budget = () => {
                 borderWidth: 1,
             },
         ],
+    };
+
+    const styles = {
+        textboxContainer: {
+            display: 'flex',
+            flexDirection: 'column',
+            backgroundColor: '#FFFFFF',
+            border: '2px solid #3BC086',
+            borderRadius: '10px',
+            padding: '10px',
+            height: '100px',
+            fontSize: '16px',
+        },
+        grayText: {
+            color: '#69747C',
+            textAlign: 'left',
+        },
+        boldGrayText: {
+            fontWeight: 'bold',
+            textAlign: 'left',
+        },
     };
 
     const doughnutData = {
@@ -126,24 +145,28 @@ const Budget = () => {
     };
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'row'  }}>
+        <Box >
             <MiniDrawer />
-          <Box>
-          <Box sx={{  p: 10 }}>
-               <Box>
-               <BarBorderComponent>
+                <Grid container spacing={2}  className="budgetGraphs" sx={{display: 'flex', flexDirection: 'row' }}>
+                    <Grid item xs={6} md={6}>
+                <Paper elevation={4} className='bugetgraphs' sx={{ p: 1, width: '100%', mt: 1, border: '1px solid #000', borderRadius: '8px' }}>
                     <h2>Spending</h2>
                     <Bar data={barData} options={barOptions} />
-                </BarBorderComponent>
-               </Box>
-            <Box>
-            <PieBorderComponent>
+                </Paper>
+                </Grid>
+                <Grid item xs={5} md={5}>
+                <Paper elevation={1} sx={{ p: 1, width: '100%', mt: 1, border: '1px solid #000', borderRadius: '8px' }}>
                     <h2> Food </h2>
                     <Doughnut data={doughnutData} options={doughnutOptions} />
-                </PieBorderComponent>
-            </Box>
-            </Box>
-          </Box>
+                </Paper>
+                </Grid>
+                <Grid item xs={3} md={3}>
+                <Box sx={{ ...styles.textboxContainer }}>
+                    <Typography sx={styles.grayText}>Gray Text</Typography>
+                    <Typography sx={styles.boldGrayText}>Bold Gray Text</Typography>
+                </Box>
+                </Grid>
+                </Grid>
         </Box>
     );
 };

@@ -64,3 +64,11 @@
   color: white !important;
 
 }
+
+.budgetGraphs{
+  position:absolute;
+  top: 0;
+  padding: 10%;
+  left:0;
+
+}
