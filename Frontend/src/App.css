@@ -91,3 +91,13 @@
   
   margin: 0 auto;
 }
+.logoloc{
+  position:fixed;
+  left:0;
+  height:10vh;
+  margin-top: 1.2%;
+  margin-left: 2%;
+}
+.logobar{
+  height: 10vh;
+}

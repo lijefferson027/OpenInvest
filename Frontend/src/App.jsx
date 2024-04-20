@@ -17,7 +17,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/accounts" element={<Accounts />} />
           <Route path="/budget" element={<Budget />} />
           <Route path="/investment" element={<Investment />} />
@@ -25,7 +26,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </>
-  )
+  );
 }
 
 export default App;
