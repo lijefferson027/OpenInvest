@@ -132,7 +132,13 @@ export default function login() {
                   </Link>
                 </Grid>
                 <Grid item xs>
-                  <Link href="#" variant="body1">
+                  <Link
+                    href="#"
+                    variant="body1"
+                    onClick={() => {
+                      navigate("/signup");
+                    }}
+                  >
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
