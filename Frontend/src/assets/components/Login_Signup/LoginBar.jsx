@@ -2,7 +2,7 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
-import logo from "./logo.svg";
+import logo from "../logo.svg";
 
 
 function ResponsiveAppBar() {

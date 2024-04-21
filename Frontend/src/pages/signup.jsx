@@ -1,44 +1,55 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
 
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import LoginBar from '../assets/components/Login_Signup/LoginBar';
-import GmailIcon from "../assets/components/Login_Signup/gmail.svg"
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import LoginBar from "../assets/components/Login_Signup/LoginBar";
+import GmailIcon from "../assets/components/Login_Signup/gmail.svg";
 import GithubIcon from "../assets/components/Login_Signup/github.svg";
 import DiscordIcon from "../assets/components/Login_Signup/discord.svg";
+import Features from "../assets/components/Login_Signup/Features.svg";
 // TODO remove, this demo shouldn't need to reset the theme.
 import { useNavigate } from "react-router-dom";
 
 const defaultTheme = createTheme();
 
-export default function login() {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
-    };
-    const navigate = useNavigate();
+export default function signup() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get("email"),
+      password: data.get("password"),
+    });
+  };
+  const navigate = useNavigate();
 
-    return (
-      <ThemeProvider theme={defaultTheme}>
-        <LoginBar />
-        <Container component="main" maxWidth="xs">
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <LoginBar />
+      <Grid
+        container
+        spacing={3}
+        className="grid-container"
+        sx={{
+          position: "absolute",
+          top: "100px",
+          left: "70px",
+        }}
+      >
+        <Grid item position="relative" marginTop={0} marginLeft={5} xs={4.7}>
           <Box
             sx={{
-              marginTop: 0,
+              marginTop: "10vh",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -48,7 +59,7 @@ export default function login() {
               <LockOutlinedIcon fontSize="large" />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Login
+              Sign Up
             </Typography>
             <Box
               component="form"
@@ -89,7 +100,7 @@ export default function login() {
                   navigate("/");
                 }}
               >
-                Login
+                Sign Up
               </Button>
               <Typography
                 sx={{
@@ -98,7 +109,7 @@ export default function login() {
                   alignItems: "center",
                 }}
               >
-                Or Login Using
+                Or Sign Up Using
               </Typography>
               <Box
                 sx={{
@@ -128,18 +139,17 @@ export default function login() {
               >
                 <Grid item xs>
                   <Link href="#" variant="body1">
-                    {"Forgot password?"}
-                  </Link>
-                </Grid>
-                <Grid item xs>
-                  <Link href="#" variant="body1">
-                    {"Don't have an account? Sign Up"}
+                    {"Already have an account? Log In"}
                   </Link>
                 </Grid>
               </Grid>
             </Box>
           </Box>
-        </Container>
-      </ThemeProvider>
-    );
+        </Grid>
+        <Grid item xs={2} md={4} lg={7}>
+          <img src={Features} alt="" />
+        </Grid>
+      </Grid>
+    </ThemeProvider>
+  );
 }

@@ -8,7 +8,7 @@ import Budget from './pages/budget';
 import Investment from './pages/investment';
 import Transactions from './pages/transactions';
 import Login from './pages/login';
-
+import Signup from "./pages/signup";
 
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Signup />} />
           <Route path="/accounts" element={<Accounts />} />
           <Route path="/budget" element={<Budget />} />
           <Route path="/investment" element={<Investment />} />
