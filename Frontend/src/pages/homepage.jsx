@@ -17,7 +17,7 @@ import Chatbot from "../assets/components/Homepage/chatbot";
 import { faRobot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Homepage = () => {
+const homepage = () => {
   const [dataToShow, setDataToShow] = useState(UserData); // State variable to track which data to display
 
   const handleButtonClick = (dataType) => {
@@ -48,7 +48,6 @@ const Homepage = () => {
       <Grid
         container
         spacing={2}
-        className="grid-container"
         sx={{
           height: "100vh",
           width: "100vw",
@@ -65,7 +64,8 @@ const Homepage = () => {
           xs="4"
           lg="5"
         >
-          <Linechart
+          <div className="homepageStyle1">
+          <Linechart 
             data={{
               labels: dataToShow.map((dataItem) => dataItem.date),
               datasets: [
@@ -92,19 +92,23 @@ const Homepage = () => {
             }}
           />
           <Buttons onClick={handleButtonClick} />
-          <Dashcard />
+          </div>
+          <div className="homepageStyle1">
+            <Dashcard />
+          </div>
+          
         </Grid>
         <Grid
           item
           position="relative"
-          marginTop={7}
+          marginTop={3}
           marginRight={3}
           xs="4"
           lg="5"
           flexDirection={"column"}
         >
           <div
-            className="tradingview-widget-container"
+            className="homepageStyle1"
             style={{ height: chatbotval ? "49%" : "80%" }}
           >
             <Newsfeed />
@@ -125,6 +129,7 @@ const Homepage = () => {
                 onClick={() => {
                   setChatBotVal(true);
                 }}
+                className="chatbotStyle"
               />
             </Button>
           )}
@@ -134,4 +139,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default homepage;
