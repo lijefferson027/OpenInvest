@@ -1,7 +1,7 @@
 import * as React from "react";
+import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -10,43 +10,67 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
+import supabase from '../supabaseClient';  // Adjust the path as necessary
 import LoginBar from "../assets/components/Login_Signup/LoginBar";
 import GmailIcon from "../assets/components/Login_Signup/gmail.svg";
 import GithubIcon from "../assets/components/Login_Signup/github.svg";
 import DiscordIcon from "../assets/components/Login_Signup/discord.svg";
 import Features from "../assets/components/Login_Signup/Features.svg";
-// TODO remove, this demo shouldn't need to reset the theme.
-import { useNavigate } from "react-router-dom";
 
 const defaultTheme = createTheme();
 
-export default function signup() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
+export default function Signup() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    const data = new FormData(event.currentTarget);
+    const email = data.get("email");
+    const password = data.get("password");
+
+    const { user, error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    setLoading(false);
+    if (error) {
+      alert(error.message);
+    } else if (user) {
+      navigate("/");  // Redirect to the homepage or dashboard
+    }
+  };
+
+  async function signInWithOAuth(provider) {
+    setLoading(true);
+    const { user, error } = await supabase.auth.signInWithOAuth({
+      provider: provider,
+      options: provider === 'google' ? {
+        queryParams: {
+          access_type: 'offline',  // Required for receiving a refresh token
+          prompt: 'consent',       // Ensures that the consent screen appears
+        }
+      } : {}
+    });
+
+    setLoading(false);
+    if (error) {
+      console.error(`${provider} Login Error:`, error.message);
+      alert(error.message);
+    } else if (user) {
+      navigate("/");
+    }
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <LoginBar />
-      <Grid
-        container
-        spacing={3}
-        className="grid-container"
-        sx={{
-          position: "absolute",
-          top: "100px",
-          left: "70px",
-        }}
-      >
-        <Grid item position="relative" marginTop={0} marginLeft={5} xs={4.7}>
+      <Grid container>
+        <Grid item position="relative" marginTop={0} marginLeft={5} xs={4.7} md={4}>
           <Box
             sx={{
               marginTop: "10vh",
@@ -96,11 +120,9 @@ export default function signup() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2, bgcolor: "#37BE83" }}
-                onClick={() => {
-                  navigate("/");
-                }}
+                disabled={loading}
               >
-                Sign Up
+                {loading ? 'Loading...' : 'Sign Up'}
               </Button>
               <Typography
                 sx={{
@@ -120,14 +142,14 @@ export default function signup() {
                   alignItems: "center",
                 }}
               >
-                <Button>
-                  <img src={GmailIcon} alt="" />
+                <Button onClick={() => signInWithOAuth('google')}>
+                  <img src={GmailIcon} alt="Google login" />
                 </Button>
-                <Button>
-                  <img src={GithubIcon} alt="" />
+                <Button onClick={() => signInWithOAuth('github')}>
+                  <img src={GithubIcon} alt="GitHub login" />
                 </Button>
-                <Button>
-                  <img src={DiscordIcon} alt="" />
+                <Button onClick={() => signInWithOAuth('discord')}>
+                  <img src={DiscordIcon} alt="Discord login" />
                 </Button>
               </Box>
               <Grid
@@ -140,19 +162,19 @@ export default function signup() {
                 <Grid item xs>
                   <Link
                     href="#"
-                    variant="body1"
+                    variant="body2"
                     onClick={() => {
                       navigate("/login");
                     }}
                   >
-                    {"Already have an account? Log In"}
+                    Already have an account? Log In
                   </Link>
                 </Grid>
               </Grid>
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={2} md={4} lg={7}>
+        <Grid item xs={2} md={6} lg={7} sx={{ marginLeft: 7 }}>
           <img src={Features} alt="" />
         </Grid>
       </Grid>

@@ -9,7 +9,7 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar
-      position="absolute"
+      position="fixed"
       className="logobar"
       sx={{ backgroundColor: "#8DDAB8" }}
     >
