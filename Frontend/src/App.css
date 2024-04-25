@@ -112,3 +112,16 @@
 .logobar {
   height: 10vh;
 }
+
+.homepageStyle1 {
+  position: relative;
+  border: 0.5rem solid rgb(65, 100, 84, .20);
+  border-radius: 3rem;
+  border-width: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.chatbotStyle{
+  height: 10vh;
+}
