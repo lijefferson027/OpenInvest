@@ -16,6 +16,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import Button from "@mui/material/Button";
+import LogoutIcon from "@mui/icons-material/Logout";
+
 //import Sidebar Icons
 //material-ui link: https://mui.com/material-ui/material-icons/
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -137,7 +140,18 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <img src={logo} alt="" />
+          <img src={logo} alt="" style={{ marginRight: "auto" }} />
+          <Button
+            variant="contained"
+            endIcon={<LogoutIcon />}
+            sx={{ bgcolor: "#8DDAB8", color: "black" }}
+            onClick={() => {
+              changeColor("White");
+              navigate("/login");
+            }}
+          >
+            Logout
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -256,7 +270,7 @@ export default function MiniDrawer() {
               />
             </ListItemButton>
           </ListItem>
-          
+
           <ListItem
             disablePadding
             sx={{ display: "block" }}
