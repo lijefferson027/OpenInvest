@@ -1,0 +1,16 @@
+.expenses-table {
+    border-collapse: collapse;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.expenses-table th,
+.expenses-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.expenses-table th {
+    background-color: #f2f2f2;
+}

@@ -1,0 +1,19 @@
+.textbox-container {
+    display: flex;
+    background-color: #FFFFFF;
+    border: 2px solid #3BC086;
+    border-radius: 10px;
+    padding: 10px;
+    height: 100px;
+    font-size: 16px;
+}
+
+.gray-text {
+    color: #69747C;
+    text-align: left;
+}
+
+.bold-gray-text {
+    font-weight: bold;
+    text-align: left;
+}
