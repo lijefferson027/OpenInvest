@@ -1,0 +1,16 @@
+.transactions-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 70px;
+    align-items: center;
+}
+
+.chart-item {
+    display: flex;
+    padding: 5px;
+    /* Center the line chart horizontally */
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin-right: 10px;
+}
