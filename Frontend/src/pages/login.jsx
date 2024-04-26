@@ -136,6 +136,7 @@ export default function Login() {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
+                marginLeft:7
               }}
             >
               <Button onClick={() => signInWithOAuth('google')} sx={{ marginRight: 1 }}>
