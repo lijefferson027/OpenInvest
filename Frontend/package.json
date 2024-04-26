@@ -22,6 +22,8 @@
     "@mui/joy": "^5.0.0-beta.32",
     "@mui/material": "^5.15.15",
     "@mui/x-charts": "^7.3.0",
+    "@mui/material": "^5.15.11",
+    "@supabase/supabase-js": "^2.42.7",
     "axios": "^1.6.8",
     "chart.js": "^4.4.2",
     "react": "^18.2.0",
