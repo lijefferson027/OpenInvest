@@ -27,9 +27,9 @@ const rows = [
         'VOO',
         '0.21 shares at $475.96',
         'VISA ⠀•••• 2574',
-        102.00,
+        102.01,
     ),
-    createData(2, '04/10/2024', 'WMT', '1.00 shares at $60.10', 'MC ⠀•••• 1253', 60.10),
+    createData(2, '04/10/2024', 'WMT', '1.00 shares at $60.11', 'MC ⠀•••• 1253', 60.11),
     createData(
         3,
         '04/09/2024',
