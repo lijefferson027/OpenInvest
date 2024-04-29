@@ -73,7 +73,7 @@ function Allocater() {
     );
 
     switch (method) {
-      case "even":
+      case "even":{
         const evenAllocation = parseFloat(budget) / categories.length;
         setAllocations(
           categories.reduce(
@@ -81,8 +81,8 @@ function Allocater() {
             {}
           )
         );
-        break;
-      case "random":
+        break;}
+      case "random":{
         let totalAllocated = 0;
         const randomAllocations = categories.map((category, index) => {
           const remaining = parseFloat(budget) - totalAllocated;
@@ -102,7 +102,7 @@ function Allocater() {
             {}
           )
         );
-        break;
+        break;}
       case "priority":
         if (totalPriority === 0) return;
         setAllocations(

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MiniDrawer from "../assets/components/sidebar";
-import { Button, Box, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import {
   UserData,
   StockData,
@@ -16,7 +16,7 @@ import Newsfeed from "../assets/components/Homepage/newsfeed";
 import Chatbot from "../assets/components/Homepage/chatbot";
 import { faRobot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import "../App.css"
 const homepage = () => {
   const [dataToShow, setDataToShow] = useState(UserData); // State variable to track which data to display
 

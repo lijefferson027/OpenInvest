@@ -1,6 +1,5 @@
 // Follow this react guide to get started (ctrl+click): https://react.dev/learn
 import './App.css'
-import MiniDrawer from './assets/components/sidebar'
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Homepage from './pages/homepage';
 import Accounts from './pages/accounts';
