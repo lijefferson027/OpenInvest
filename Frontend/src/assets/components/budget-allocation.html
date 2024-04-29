@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Budget Buddy</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+      .bucket-input {
+      margin: 10px;
+      padding: 1px;
+      }
+
+      .bucket-grid {
+      padding: 10px;
+      }
+
+      p {
+      font-size: 12px;
+      display: none;
+      }
+
+      label {
+      text-align: left;
+      }
+
+      .bucket-grid input[type="number"] {
+      float: right;
+      text-align: right;
+      }
+
+      h5 {
+      font-size: 12px;
+      font-weight: normal;
+      text-align: center;
+      padding: -1px;
+      margin: -1px;
+      }
+
+      .button-container {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      gap: 10px;
+      }
+
+      body {
+        padding-bottom: 35px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <header>
+        <span>Budget Buddy</span>
+    </header>
+    <div class="form-container">
+      <form>
+        <h2>Budget Information</h2>
+        <div class="input-group">
+          <label for="total-budget">Total Budget:</label>
+          <input type="number" id="total-budget" name="total-budget" min="0" step="0.01" readonly>
+        </div>
+        <hr>
+        <h2>Bucket Allocation</h2>
+        <h5 id="instructions">Please allocate your budget for each bucket below.</h5>
+        <div class="bucket-grid">
+          <div class="bucket-input">
+            <label for="bucket1p">Education:</label>
+            <input type="number" id="bucket1" name="bucket1" min="0" step="0.01" required>
+            <p id="bucket1">For educational-related costs such as tuition, books, supplies, etc.</p>
+          </div>
+          <div class="bucket-input">
+            <label for="bucket2">Food and Drink (Restaurants):</label>
+            <input type="number" id="bucket2" name="bucket2" min="0" step="0.01" required>
+            <p for="bucket2">For eating out, takeout, etc.</p>
+          </div>
+          <div class="bucket-input">
+            <label for="bucket3">Health and Fitness:</label>
+            <input type="number" id="bucket3" name="bucket3" min="0" step="0.01" required>
+            <p for="bucket3">For gym memberships, health insurance, doctor's visits, etc.</p>
+          </div>
+          <div class="bucket-input">
+            <label for="bucket4">Recreation:</label>
+            <input type="number" id="bucket4" name="bucket4" min="0" step="0.01" required>
+            <p for="bucket4">For hobbies, sports, etc.</p>
+          </div>
+          <div class="bucket-input">
+            <label for="bucket5">Fashion:</label>
+            <input type="number" id="bucket5" name="bucket5" min="0" step="0.01" required>
+            <p for="bucket5">For clothing, shoes, accessories, etc.</p>
+          </div>
+          <div class="bucket-input">
+            <label for="bucket6">Entertainment:</label>
+            <input type="number" id="bucket6" name="bucket6" min="0" step="0.01" required>
+            <p for="bucket6">For movies, concerts, arts, etc.</p>
+          </div>
+          <div class="bucket-input">
+            <label for="bucket7">Home and Vehicle:</label>
+            <input type="number" id="bucket7" name="bucket7" min="0" step="0.01" required>
+            <p>For rent, mortgage, furniture, car payments, etc.</p>
+          </div>
+          <div class="bucket-input">
+            <label for="bucket8">Groceries:</label>
+            <input type="number" id="bucket8" name="bucket8" min="0" step="0.01" required>
+            <p>For food and household supplies.</p>
+          </div>
+          <div class="bucket-input">
+            <label for="bucket9">Travel:</label>
+            <input type="number" id="bucket9" name="bucket9" min="0" step="0.01" required>
+            <p>For transportation, lodging, etc.</p>
+          </div>
+          <div class="bucket-input">
+            <label for="bucket10">Miscellaneous:</label>
+            <input type="number" id="bucket10" name="bucket10" min="0" step="0.01" required>
+            <p>For everything else.</p>
+          </div>
+        </div>
+          <div class="button-container">
+            <input type="submit" value="Allocate Budget" id="submit-button">
+            <input type="button" value="Recommend Allocation" onclick="recommendToggle()">
+          </div>
+        <div class="message-container">
+          <label id="budget-error-message"></label>
+        </div>
+      </form>
+    </div>
+    <script src="budget-allocation.js"></script>
+    <script>
+      
+      function recommendToggle() {
+        var totalBudget = document.getElementById('total-budget');
+        totalBudget.removeAttribute('readonly');
+        var instruction = document.getElementById('instructions');
+        instruction.textContent = 'Please enter a total budget to automatically allocate buckets.';
+      }
+
+      var totalBudget = document.getElementById('total-budget');
+      totalBudget.addEventListener('input', () => {
+        var bucket1 = document.getElementById('bucket1');
+        var bucket2 = document.getElementById('bucket2');
+        var bucket3 = document.getElementById('bucket3');
+        var bucket4 = document.getElementById('bucket4');
+        var bucket5 = document.getElementById('bucket5');
+        var bucket6 = document.getElementById('bucket6');
+        var bucket7 = document.getElementById('bucket7');
+        var bucket8 = document.getElementById('bucket8');
+        var bucket9 = document.getElementById('bucket9');
+        var bucket10 = document.getElementById('bucket10');
+
+        const totalBudgetInput = totalBudget.value;
+        const totalBudgetValue = parseFloat(totalBudgetInput);
+
+        bucket1.value = (.15 * totalBudgetValue).toFixed(2);
+        bucket2.value = (.075 * totalBudgetValue).toFixed(2);
+        bucket3.value = (.125 * totalBudgetValue).toFixed(2);
+        bucket4.value = (.075 * totalBudgetValue).toFixed(2);
+        bucket5.value = (.05 * totalBudgetValue).toFixed(2);
+        bucket6.value = (.05 * totalBudgetValue).toFixed(2);
+        bucket7.value = (.25 * totalBudgetValue).toFixed(2);
+        bucket8.value = (.075 * totalBudgetValue).toFixed(2);
+        bucket9.value = (.075 * totalBudgetValue).toFixed(2);
+        bucket10.value = (.075 * totalBudgetValue).toFixed(2);
+      });
+
+    </script>
+  </body>
+</html>

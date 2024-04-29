@@ -65,6 +65,14 @@
 
 }
 
+
+.budgetGraphs{
+  position:absolute;
+  top: 0;
+  padding: 10%;
+  left:0;
+
+
 .RateofReturnChart {
   position: relative;
   width: 90vw;
@@ -124,4 +132,5 @@
 
 .chatbotStyle{
   height: 10vh;
+
 }
