@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -40,11 +43,12 @@
 .read-the-docs {
   color: #888;
 }
-.footer{
-  position:fixed;
-  left:0;
-  bottom:0;
-  width:100%;
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 /* App.css */
@@ -56,19 +60,77 @@
 
 }
 
-.bottom-nav-styling{
-  background-color: #8DDAB8 !important;
-  height: 8vh !important;
-}
 .nav-label-styling:hover {
   color: white !important;
 
 }
+
 
 .budgetGraphs{
   position:absolute;
   top: 0;
   padding: 10%;
   left:0;
+
+
+.RateofReturnChart {
+  position: relative;
+  width: 90vw;
+  height: 80vh;
+  border: 0.5rem solid rgb(65, 100, 84, .20);
+  border-radius: 3rem;
+  border-width: 1rem;
+  padding: 1rem;
+}
+
+.ButtonStyle {
+  outline: none !important;
+}
+
+.HelpText {
+  font: "Arial, sans-serif";
+  font-size: 1rem !important;
+  font-weight: bold;
+  width: 30vw;
+  background-color: #8DDAB8 !important;
+  color: rgb(65, 100, 84) !important;
+}
+
+.tradingview-widget-2 {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  width: 100vw !important;
+}
+
+.loginBar {
+  width: 100vw;
+  margin: 0 auto;
+}
+
+.logoloc {
+  position: fixed;
+  left: 0;
+  height: 10vh;
+  margin-top: 1.2%;
+  margin-left: 2%;
+}
+
+.logobar {
+  height: 10vh;
+}
+
+.homepageStyle1 {
+  position: relative;
+  border: 0.5rem solid rgb(65, 100, 84, .20);
+  border-radius: 3rem;
+  border-width: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.chatbotStyle{
+  height: 10vh;
 
 }
