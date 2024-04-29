@@ -12,7 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import supabase from '../supabaseClient';  // Adjust the path as necessary
+import supabase from "../supabaseClient"; // Adjust the path as necessary
 import LoginBar from "../assets/components/Login_Signup/LoginBar";
 import GmailIcon from "../assets/components/Login_Signup/gmail.svg";
 import GithubIcon from "../assets/components/Login_Signup/github.svg";
@@ -41,7 +41,7 @@ export default function Signup() {
     if (error) {
       alert(error.message);
     } else if (user) {
-      navigate("/");  // Redirect to the homepage or dashboard
+      navigate("/"); // Redirect to the homepage or dashboard
     }
   };
 
@@ -49,12 +49,15 @@ export default function Signup() {
     setLoading(true);
     const { user, error } = await supabase.auth.signInWithOAuth({
       provider: provider,
-      options: provider === 'google' ? {
-        queryParams: {
-          access_type: 'offline',  // Required for receiving a refresh token
-          prompt: 'consent',       // Ensures that the consent screen appears
-        }
-      } : {}
+      options:
+        provider === "google"
+          ? {
+              queryParams: {
+                access_type: "offline", // Required for receiving a refresh token
+                prompt: "consent", // Ensures that the consent screen appears
+              },
+            }
+          : {},
     });
 
     setLoading(false);
@@ -70,7 +73,14 @@ export default function Signup() {
     <ThemeProvider theme={defaultTheme}>
       <LoginBar />
       <Grid container>
-        <Grid item position="relative" marginTop={0} marginLeft={5} xs={4.7} md={4}>
+        <Grid
+          item
+          position="relative"
+          marginTop={0}
+          marginLeft={5}
+          xs={4.7}
+          md={4}
+        >
           <Box
             sx={{
               marginTop: "10vh",
@@ -122,7 +132,7 @@ export default function Signup() {
                 sx={{ mt: 3, mb: 2, bgcolor: "#37BE83" }}
                 disabled={loading}
               >
-                {loading ? 'Loading...' : 'Sign Up'}
+                {loading ? "Loading..." : "Sign Up"}
               </Button>
               <Typography
                 sx={{
@@ -142,13 +152,13 @@ export default function Signup() {
                   alignItems: "center",
                 }}
               >
-                <Button onClick={() => signInWithOAuth('google')}>
+                <Button onClick={() => signInWithOAuth("google")}>
                   <img src={GmailIcon} alt="Google login" />
                 </Button>
-                <Button onClick={() => signInWithOAuth('github')}>
+                <Button onClick={() => signInWithOAuth("github")}>
                   <img src={GithubIcon} alt="GitHub login" />
                 </Button>
-                <Button onClick={() => signInWithOAuth('discord')}>
+                <Button onClick={() => signInWithOAuth("discord")}>
                   <img src={DiscordIcon} alt="Discord login" />
                 </Button>
               </Box>
